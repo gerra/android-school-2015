@@ -1,5 +1,6 @@
 package com.elegion.githubclient.activity;
 
+import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -7,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.elegion.githubclient.R;
 import com.elegion.githubclient.adapter.RepositoriesAdapter;
@@ -36,6 +38,13 @@ public class MyRepositoriesActivity extends BaseActivity {
         mRepositoryList = (RecyclerView) findViewById(R.id.repositories_list);
         mRepositoryList.setLayoutManager(new LinearLayoutManager(this));
         mRepositoryList.setAdapter(new RepositoriesAdapter());
+        mRepositoryList.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+                int padding = getResources().getDimensionPixelSize(R.dimen.padding_medium);
+                outRect.set(padding, padding, padding, padding);
+            }
+        });
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
