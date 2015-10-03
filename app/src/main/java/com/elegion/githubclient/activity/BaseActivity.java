@@ -39,7 +39,7 @@ public class BaseActivity extends AppCompatActivity {
         mToast.show();
     }
 
-    protected void logout() {
+    public void logout() {
         removeCookies();
         AppDelegate.getSettings().edit().remove(AppDelegate.ACCESS_TOKEN).commit();
         startActivity(LoginActivity.class, true);

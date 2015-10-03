@@ -2,6 +2,7 @@ package com.elegion.githubclient.activity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.elegion.githubclient.LoginDialogFragment;
 import com.elegion.githubclient.R;
 import com.elegion.githubclient.api.ApiClient;
 import com.elegion.githubclient.model.User;
@@ -103,6 +105,8 @@ public class UserActivity extends BaseActivity implements View.OnClickListener {
 
                 if (statusCode != ApiClient.STATUS_CODE_OK) {
                     //TODO: handle error
+                    DialogFragment dialogFragment = new LoginDialogFragment();
+                    dialogFragment.show(getSupportFragmentManager(), LoginDialogFragment.KEY);
                 } else {
                     String userName = responseObject.optString("login");
                     String userAvatar = responseObject.optString("avatar_url");

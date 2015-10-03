@@ -3,6 +3,7 @@ package com.elegion.githubclient.activity;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.elegion.githubclient.LoginDialogFragment;
 import com.elegion.githubclient.R;
 import com.elegion.githubclient.adapter.RepositoriesAdapter;
 import com.elegion.githubclient.api.ApiClient;
@@ -80,6 +82,8 @@ public class MyRepositoriesActivity extends BaseActivity {
 
                 if (responseObject.optInt(ApiClient.STATUS_CODE) != ApiClient.STATUS_CODE_OK) {
                     //TODO: handle error
+                    DialogFragment dialogFragment = new LoginDialogFragment();
+                    dialogFragment.show(getSupportFragmentManager(), LoginDialogFragment.KEY);
                 }
 
                 JSONArray array = (JSONArray)responseObject.get(ApiClient.LIST_DATA_KEY);

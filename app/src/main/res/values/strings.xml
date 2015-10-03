@@ -6,4 +6,7 @@
     <string name="logout">Выйти</string>
     <string name="ab_my_repositories">Мои репозитории</string>
     <string name="ab_my_profile">Мой профиль</string>
+    <string name="login_problem_dialog_title">Ошибка авторизации</string>
+    <string name="login_problem_dialog_retry">Повтор</string>
+    <string name="login_problem_dialog_cancel">Отмена</string>
 </resources>

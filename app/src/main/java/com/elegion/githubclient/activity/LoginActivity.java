@@ -3,11 +3,13 @@ package com.elegion.githubclient.activity;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.text.TextUtils;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.elegion.githubclient.AppDelegate;
+import com.elegion.githubclient.LoginDialogFragment;
 import com.elegion.githubclient.R;
 import com.elegion.githubclient.api.ApiClient;
 
@@ -118,6 +120,9 @@ public class LoginActivity extends BaseActivity {
 
                 if (responseObject.optInt(ApiClient.STATUS_CODE) != ApiClient.STATUS_CODE_OK) {
                     //TODO: handle error
+                    DialogFragment dialogFragment = new LoginDialogFragment();
+                    dialogFragment.show(getSupportFragmentManager(), LoginDialogFragment.KEY);
+                    return false;
                 }
 
                 String accessToken = responseObject.optString(ACCESS_TOKEN_RESPONSE_KEY);
