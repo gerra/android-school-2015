@@ -38,7 +38,7 @@ public class UserActivity extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.ac_user);
         mRepositoriesButton = (Button) findViewById(R.id.btn_my_repositories);
         mUserName = (TextView) findViewById(R.id.txt_user_name);
-        mUserAvatar = (ImageView) findViewById(R.id.img_user_avatar);
+        mUserAvatar = (ImageView) findViewById(R.id.img_circle_user_avatar);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         new GetUserTask().execute();
